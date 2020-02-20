@@ -4,6 +4,6 @@ import { Menu, Contactos, Direcciones, Escuela, Instructivos, Sugerencias } from
 
 export default function App() {
   return (
-    <Contactos/>
+    <Menu/>
   );
 }
