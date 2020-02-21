@@ -4,3 +4,4 @@ export {default as Contactos} from './Contactos';
 export {default as Direcciones} from './Direcciones';
 export {default as Instructivos} from './Instructuvos';
 export {default as Sugerencias} from './Sugerencias';
+export {default as Accidentes} from './Accidentes';
