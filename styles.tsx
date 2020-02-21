@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 14,
+    fontSize: 14
   },
   title: {
     color: 'white',
@@ -51,6 +52,25 @@ export const styles = StyleSheet.create({
   },
   contactList: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    paddingBottom: 10
+  },
+  emergencyContactList: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingBottom: 10
+  },
+  phoneNumber: {
+    flexDirection: 'row',
+    borderColor: 'white',
+    borderWidth:2,
+    borderRadius:4,
+    padding:6
+
+  },accidentesItem: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    paddingVertical: 12
   }
 });
