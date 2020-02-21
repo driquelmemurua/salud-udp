@@ -29,9 +29,9 @@ function Default({children, title = null, subtitle = null, logo = false, navigat
           }
         </View>
       </View>
-      <View style={{flexGrow: 2, width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+
         {children}
-      </View>
+
     </View>
   );
 }
