@@ -6,56 +6,25 @@ import Pdf from 'react-native-pdf';
 
 import { Default } from '../layouts';
 import { styles } from '../styles';
+import { ACCIDENTS_VIEWS } from '../constants';
 
-const accidentes = [
-  {
-    id: 0,
-    name: 'Categoría accidente 1'
-  },
-  {
-    id: 1,
-    name: 'Categoría accidente 2'
-  },
-  {
-    id: 2,
-    name: 'Categoría accidente 3'
-  }
-
-];
-
-function Categorias({}) {
-
-    const onPress = () => {
-        alert('NAVEGAR');
-    }
-    
+function Categorias({navigation}) {
+   
     return (
     <Default
       logo
       title='Categoría de accidente'>
 
       <FlatList
-        data={accidentes}
+        data={ACCIDENTS_VIEWS}
         renderItem={({ item }) => 
-
-        <TouchableWithoutFeedback onPress={onPress} >
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {name: item.name})} >
             <Text style={styles.accidentesItem}>
                 {item.name}
             </Text>
-        </TouchableWithoutFeedback>
-          
+        </TouchableWithoutFeedback>  
         }
       />
-    </Default>
-  );
-}
-
-function Flujograma({}) {
- 
-    return (
-    <Default
-      title='Categoría de accidente seleccionado'
-      navigation>
     </Default>
   );
 }

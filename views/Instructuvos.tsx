@@ -1,9 +1,11 @@
 import React from 'react';
 import { Default } from '../layouts';
 
-function Instructivos() {
+function Instructivos({navigation}) {
   return (
-    <Default>
+    <Default
+      navigation={navigation.goBack}
+    >
 
     </Default>
   );

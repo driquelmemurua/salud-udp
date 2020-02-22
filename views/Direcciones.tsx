@@ -1,9 +1,11 @@
 import React from 'react';
 import { Default } from '../layouts';
 
-function Direcciones() {
+function Direcciones({navigation}) {
   return (
-    <Default>
+    <Default
+      navigation={navigation.goBack}
+    >
 
     </Default>
   );

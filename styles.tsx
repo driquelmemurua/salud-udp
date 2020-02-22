@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#19B5B5',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: 80,
+    paddingTop: 80
   },
   heading: {
     paddingBottom: 40,
