@@ -18,10 +18,10 @@ const escuelas = [
   }
 ];
 
-function Escuela() {
+function Escuela({navigation}) {
   return (
     <Default
-      navigation
+      navigation={navigation.goBack}
       title = '¿Cual es tu escuela?'
     >
       <FlatList

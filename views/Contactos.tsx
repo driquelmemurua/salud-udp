@@ -41,12 +41,12 @@ const emergencias = [
   },
 ]
 
-function Contactos() {
+function Contactos({navigation}) {
   return (
     <Default
       title='CONTACTOS'
       subtitle='Escuela 1'
-      navigation
+      navigation={navigation.goBack}
     >
       <FlatList
         style={{width: '80%', flexGrow: 0, paddingBottom:50 }}
