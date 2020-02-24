@@ -8,12 +8,9 @@ function Flujograma({ route, navigation }) {
 
   return (
   <Default
-    title='Categoría de accidente seleccionado'
-    navigation={navigation.goBack}
-    >
-    <Text>
-      {name}
-    </Text>
+    title={name}
+    navigation={navigation.goBack}>
+
   </Default>
 );
 }
