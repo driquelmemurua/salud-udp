@@ -18,7 +18,7 @@ function Categorias({navigation}) {
       <FlatList
         data={ACCIDENTS_VIEWS}
         renderItem={({ item }) => 
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {name: item.name})} >
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {uri: item.uri, name: item.name})} >
             <Text style={styles.accidentesItem}>
                 {item.name}
             </Text>

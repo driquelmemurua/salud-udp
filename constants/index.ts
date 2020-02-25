@@ -24,14 +24,20 @@ export const CONTENT_VIEWS = [
 export const ACCIDENTS_VIEWS = [
   {
     id: 0,
-    name: 'Categoría accidente 1'
+    name: 'Categoría accidente 1',
+    uri: 'https://laderasur.com/content/uploads/2018/02/pdf-test.pdf',
+    file: 'pdf-test.pdf'
   },
   {
     id: 1,
-    name: 'Categoría accidente 2'
+    name: 'Categoría accidente 2',
+    uri: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    file: 'dummy.pdf'
   },
   {
     id: 2,
-    name: 'Categoría accidente 3'
+    name: 'Categoría accidente 3',
+    uri: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
+    file: 'test.pdf'
   }
 ];
