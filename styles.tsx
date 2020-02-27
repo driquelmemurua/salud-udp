@@ -67,10 +67,21 @@ export const styles = StyleSheet.create({
     borderRadius:4,
     padding:6
 
-  },accidentesItem: {
+  },
+  accidentesItem: {
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
     paddingVertical: 12
-  }
+  },
+  containerWebView: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+  },
+  loginWebView: {
+    flex: 1,
+    marginTop: 30,
+    marginBottom: 20
+}
 });
