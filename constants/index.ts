@@ -41,3 +41,10 @@ export const ACCIDENTS_VIEWS = [
     file: 'test.pdf'
   }
 ];
+
+export const DIRECCION_VIEWS = [
+  {
+    id: 5,
+    name: 'Dirección'
+  }
+];

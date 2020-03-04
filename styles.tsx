@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { Dimensions } from 'react-native';
+import Constants from 'expo-constants';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#19B5B5',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -83,5 +85,18 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginTop: 30,
     marginBottom: 20
-}
+  },
+  autoComplete: {
+    width: '90%',
+    height: 40, 
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderColor: 'white', 
+    borderWidth: 1
+  },
+  containerFlatList: {
+    width:'80%',
+    marginTop: 5,
+  }
 });
