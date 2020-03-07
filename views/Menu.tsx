@@ -3,12 +3,13 @@ import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { Default } from '../layouts';
 import { styles } from '../styles';
 import { CONTENT_VIEWS } from '../constants';
+import { connect } from 'react-redux';
 
-function Menu({navigation}) {
+function Menu({navigation, selectedSchool}) {
   return (
     <Default
       logo
-      subtitle='Escuela 1'
+      subtitle={selectedSchool}
     >
       <FlatList
         data={CONTENT_VIEWS}
@@ -24,4 +25,8 @@ function Menu({navigation}) {
   );
 }
 
-export default Menu;
+function mapStateToProps(state) {
+  return { selectedSchool: state.schools.selectedSchool };
+} 
+
+export default connect(mapStateToProps)(Menu);

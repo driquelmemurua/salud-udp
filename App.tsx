@@ -3,10 +3,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Menu, Contactos, Direcciones, Escuela, Instructivos, Sugerencias, Accidentes, Flujograma, Direccion } from './views';
-import { CONTENT_VIEWS, DIRECCION_VIEWS } from './constants';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { Menu, Contactos, Direcciones, Escuela, Instructivos, Sugerencias, Accidentes, Flujograma } from './views';
+import { CONTENT_VIEWS } from './constants';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers';
 
+//redux
+const store = createStore(reducer);
+//navigation
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -71,38 +76,40 @@ function AccidentsNavigation() {
 
 function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        tabBarOptions={{
-          activeBackgroundColor: '#196E6E',
-          inactiveBackgroundColor: '#196E6E',
-          activeTintColor: '#FFFFFF',
-          inactiveTintColor: '#C3C4C0',
-          style: {
-            borderTopWidth: 0,
-          }
-        }}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'ACCIDENTES') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'CONTENIDO') {
-              iconName = 'md-menu';
+    <Provider store={ store }>
+      <NavigationContainer>
+        <Tab.Navigator
+          tabBarOptions={{
+            activeBackgroundColor: '#196E6E',
+            inactiveBackgroundColor: '#196E6E',
+            activeTintColor: '#FFFFFF',
+            inactiveTintColor: '#C3C4C0',
+            style: {
+              borderTopWidth: 0,
             }
+          }}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-      >
-        <Tab.Screen name="CONTENIDO" component={ContentNavigation} />
-        <Tab.Screen name="ACCIDENTES" component={AccidentsNavigation} />
-      </Tab.Navigator>
-    </NavigationContainer>
+              if (route.name === 'ACCIDENTES') {
+                iconName = focused
+                  ? 'ios-information-circle'
+                  : 'ios-information-circle-outline';
+              } else if (route.name === 'CONTENIDO') {
+                iconName = 'md-menu';
+              }
+
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+        >
+          <Tab.Screen name="CONTENIDO" component={ContentNavigation} />
+          <Tab.Screen name="ACCIDENTES" component={AccidentsNavigation} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
