@@ -3,8 +3,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Menu, Contactos, Direcciones, Escuela, Instructivos, Sugerencias, Accidentes, Flujograma } from './views';
-import { CONTENT_VIEWS } from './constants';
+import { Menu, Contactos, Direcciones, Escuela, Instructivos, Sugerencias, Accidentes, Flujograma, Direccion } from './views';
+import { CONTENT_VIEWS, DIRECCION_VIEWS } from './constants';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers';
@@ -46,6 +46,11 @@ function ContentNavigation() {
         name={CONTENT_VIEWS[4].name}
         component={Escuela}
       />
+      <Stack.Screen
+        name={DIRECCION_VIEWS[0].name}
+        component={Direccion}
+      />
+      
     </Stack.Navigator>
   );
 }
