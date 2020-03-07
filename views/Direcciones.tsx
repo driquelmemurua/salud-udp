@@ -6,10 +6,11 @@ import Autocomplete from 'react-native-autocomplete-input';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, Directions } from 'react-native-gesture-handler';
 
 import { SafeAreaView} from 'react-native';
 import Constants from 'expo-constants';
+import { connect } from 'react-redux';
 
 const HOSPITALES = [
   {
@@ -44,7 +45,7 @@ const HOSPITALES = [
   },
 ];
 
-function Direcciones({navigation}) {
+function Direcciones({navigation, selectedSchool}) {
   
   const [direcciones, setDirecciones]= useState(HOSPITALES);
   
@@ -55,7 +56,8 @@ function Direcciones({navigation}) {
   return (
     <Default
       navigation={navigation.goBack}
-      title='DIRECCIONES'>
+      title='DIRECCIONES'
+      subtitle={selectedSchool}>
       <View style={{flexDirection:'row', width:'80%'}}>
         <TextInput
         selectionColor={'#93d9cd'}
@@ -86,4 +88,9 @@ function Direcciones({navigation}) {
   );
 }
 
-export default Direcciones;
+function mapStateToProps(state) {
+  return { selectedSchool: state.schools.selectedSchool };
+} 
+
+export default connect(mapStateToProps)(Direcciones);
+

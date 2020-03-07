@@ -21,6 +21,13 @@ export const CONTENT_VIEWS = [
   }
 ];
 
+export const DIRECCION_VIEWS = [
+  {
+    id: 0,
+    name: 'Dirección'
+  }
+];
+
 export const ACCIDENTS_VIEWS = [
   {
     id: 0,
