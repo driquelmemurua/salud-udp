@@ -41,3 +41,35 @@ export const ACCIDENTS_VIEWS = [
     file: 'test.pdf'
   }
 ];
+
+export const SCHOOLS = [
+  {
+    id: 0,
+    name: 'Medicina',
+
+  },
+  {
+    id: 1,
+    name: 'Enfermería'
+  },
+  {
+    id: 2,
+    name: 'Psicología',
+  },
+  {
+    id: 3,
+    name: 'Kinesiología'
+  },
+  {
+    id: 4,
+    name: 'Obstetricia y Neonatología'
+  },
+  {
+    id: 5,
+    name: 'Odontología'
+  },
+  {
+    id: 6,
+    name: 'Tecnología Médica'
+  }
+]

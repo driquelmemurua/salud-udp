@@ -1,24 +1,13 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableHighlight } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Default } from '../layouts';
 import { ListItem } from '../components';
+import { allActions } from '../actions';
+import { SCHOOLS } from '../constants';
 
-const escuelas = [
-  {
-    id: 0,
-    name: 'Escuela 1'
-  },
-  {
-    id: 1,
-    name: 'Escuela 2'
-  },
-  {
-    id: 2,
-    name: 'Escuela 3'
-  }
-];
-
-function Escuela({navigation}) {
+function Escuela({navigation, updateSchool}) {
   return (
     <Default
       navigation={navigation.goBack}
@@ -26,13 +15,29 @@ function Escuela({navigation}) {
     >
       <FlatList
         style={{width: '80%'}}
-        data={escuelas}
+        data={SCHOOLS}
         renderItem={({ item }) => 
-          <ListItem text={item.name}/>
+          <TouchableHighlight onPress={() => {
+              updateSchool(item.name);
+              navigation.navigate('Menu');
+            }}>
+            <ListItem text={item.name}/>
+          </TouchableHighlight>
         }
       />
     </Default>
   );
 }
 
-export default Escuela;
+const mapDispatchToProps = dispatch => {
+  const { updateSchool } = allActions.schoolActions;
+  return bindActionCreators({
+    updateSchool,
+  }, dispatch)
+};
+
+const mapStateToProps = (state) => {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Escuela);
