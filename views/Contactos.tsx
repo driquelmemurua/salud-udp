@@ -2,8 +2,9 @@ import React from 'react';
 import { Text, FlatList, View } from 'react-native';
 import {
   TouchableHighlight
-} from 'react-native'
-import {Linking} from 'react-native'
+} from 'react-native';
+import { connect } from 'react-redux';
+import { Linking } from 'react-native'
 import { Default } from '../layouts';
 import { styles } from '../styles';
 import { FontAwesome } from '@expo/vector-icons';
@@ -41,11 +42,11 @@ const emergencias = [
   },
 ]
 
-function Contactos({navigation}) {
+function Contactos({navigation, selectedSchool}) {
   return (
     <Default
       title='CONTACTOS'
-      subtitle='Escuela 1'
+      subtitle={selectedSchool}
       navigation={navigation.goBack}
     >
       <FlatList
@@ -92,4 +93,8 @@ function PhoneContact({ name = null, number }){
   )
 }
 
-export default Contactos;
+function mapStateToProps(state) {
+  return { selectedSchool: state.schools.selectedSchool };
+} 
+
+export default connect(mapStateToProps)(Contactos);
