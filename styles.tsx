@@ -201,7 +201,7 @@ export const styles = StyleSheet.create({
   },
   fileText: {
     marginTop:2,
-    paddingRight:8,
+    paddingRight:15,
     paddingLeft:8,
     color: 'white',
     fontSize: 15,

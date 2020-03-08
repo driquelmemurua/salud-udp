@@ -72,7 +72,7 @@ export default function AutoComplete({onChangeText, filters=null}) {
                   <FilterButtonGroup title='ESCUELAS' data={SCHOOLS}/>
                   <FilterButtonGroup title='TIPO' data={TYPES}/>
                   
-                  <View style={{flexDirection:'row', justifyContent:'space-between', paddingBottom:15}}>
+                  <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                   <Button 
                     text={'Quitar filtros'} 
                     type='PRIMARY'
