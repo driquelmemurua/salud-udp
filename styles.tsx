@@ -141,15 +141,39 @@ export const styles = StyleSheet.create({
     marginTop: 5,
   },
   containerFilter: {
-    height: 200,
     width: '80%',
     marginTop: '5%',
-
-    
     backgroundColor: '#19B5B5',
     borderColor:'white',
     borderWidth:1,
     borderRadius:1,
-  
+    padding:10,
+    justifyContent:'flex-start'
   },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  buttonGroup:{
+    flexDirection:'row',
+    flexWrap:'wrap'
+  },
+  button: {
+    fontSize:14,
+    padding:8,
+    color:'white',
+    backgroundColor:'#47C4C4',
+    borderColor: 'white',
+    borderWidth:1,
+    borderRadius:4,
+  },
+  primaryButton: {
+    fontSize:16,
+    padding:8,
+    color:'white',
+    backgroundColor:'#19B5B5',
+    borderColor: 'white',
+    borderWidth:2,
+    borderRadius:4,
+  }
 });

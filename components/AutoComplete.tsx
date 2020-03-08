@@ -1,13 +1,42 @@
 import React,{ useState} from 'react';
 
-import { View, TextInput, TouchableOpacity, Modal,Text} from 'react-native';
+import { View, TextInput, TouchableOpacity, Modal,Text, Picker} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from '../styles';
+
+import { Button } from '../components';
+import { SCHOOLS } from '../constants';
+
+const TYPES = [
+  {
+    id: 0,
+    name: 'Vídeo',
+  },
+  {
+    id: 1,
+    name: 'Documento'
+  },
+  {
+    id: 2,
+    name: 'Normativa',
+  }
+]
+const FILTER = [
+  {
+    id: 0,
+    name: 'Quitar filtros',
+  },
+  {
+    id: 1,
+    name: 'Aplicar filtros'
+  }
+]
 
 
 function AutoComplete({onChangeText, filters=null}) {
 
     const [filterPress,setFilterPress]=useState(false)
+
 
     return (
         <View style={{width:'100%', alignItems:'center'}}>
@@ -37,19 +66,51 @@ function AutoComplete({onChangeText, filters=null}) {
 
             {filterPress? 
                 <View style={styles.containerFilter}>
+                   <FilterButtonGroup title='ESCUELAS' data={SCHOOLS}/>
+                   <FilterButtonGroup title='TIPO' data={TYPES}/>
+                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                    <Button 
+                      text={'Quitar filtros'} 
+                      type='PRIMARY'
+                      onPress={null} 
+                      viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
+                    <Button 
+                      text={'Aplicar filtros'} 
+                      type='PRIMARY'
+                      onPress={null} 
+                      viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
                     
+                   </View>
+                   
                 </View>
                 
                 :null
             }
               
-
-            
-
         </View>
-
-
     );
 }
+
+function FilterButtonGroup({title=null,data}) {
+
+  const buttons=data.map((item)=>  
+  <Button text={item.name} onPress={null} viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> )
+
+  return(
+    <View>
+      {title?
+        <Text style={{...styles.text, fontWeight:'bold', marginStart:5}}>{title}</Text>
+      :null}
+      
+      <View style={styles.buttonGroup}>
+        {buttons}
+      </View>
+  
+    </View>
+                    
+  );
+    
+}
+
 
 export default AutoComplete;
