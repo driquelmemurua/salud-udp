@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, FlatList, TouchableHighlight } from 'react-native'
+import { View, FlatList, TouchableWithoutFeedback } from 'react-native'
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
@@ -29,7 +29,7 @@ const INSTRUCTIVOS = [
   },
   {
     id: '3',
-    name: 'Material 4 ejemploDeUnNombreSúperLargoParaUnDocumento',
+    name: 'Material 4',
     type: 'DOCUMENTO' ,
     schools: ['Kinesiología']
   }
@@ -53,17 +53,15 @@ function Instructivos({navigation, selectedSchool}) {
        
         <AutoComplete onChangeText={(text)=>filterList(text)} filters='true'/>
         
-        <TagGroup data={instructivos} removeTag={(index)=>{ setInstructivos([...instructivos.slice(0,index),...instructivos.slice(index+1)]) }} /> 
-        
         <FlatList
         style={{width: '80%'}}
         data={INSTRUCTIVOS}
         renderItem={({ item }) => 
-          <TouchableHighlight underlayColor='white' onPress={() => {
+          <TouchableWithoutFeedback  onPress={() => {
               
             }}>
             <FileItem title={item.name} type={item.type}/>
-          </TouchableHighlight>
+          </TouchableWithoutFeedback>
         }
       />
 

@@ -17,7 +17,7 @@ function Escuela({navigation, updateSchool}) {
         style={{width: '80%'}}
         data={SCHOOLS}
         renderItem={({ item }) => 
-          <TouchableHighlight onPress={() => {
+          <TouchableHighlight underlayColor='white' onPress={() => {
               updateSchool(item.name);
               navigation.navigate('Menu');
             }}>

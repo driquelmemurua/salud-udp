@@ -11,11 +11,17 @@ function Button({text, onPress, viewStyle={},type}) {
           underlayColor: 'white',
           textStyle: styles.primaryButton
         }
-      case 'TAG': 
+        case 'TAG': 
         return { 
           _viewStyle: {...styles.fixToText, ...viewStyle},
           underlayColor: 'white',
           textStyle: styles.button
+        }
+        case 'PRESSED_TAG': 
+        return { 
+          _viewStyle: {...styles.fixToText, ...viewStyle},
+          underlayColor: 'white',
+          textStyle: styles.pressedTagbutton
         }
       default:
         return { 

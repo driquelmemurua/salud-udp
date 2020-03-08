@@ -1,10 +1,11 @@
 import React,{ useState} from 'react';
 
-import { View, TextInput, TouchableOpacity, Modal,Text, ScrollView} from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, ScrollView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 import { styles } from '../styles';
 
-import { Button } from '../components';
+import { Button, Tag } from '../components';
 import { SCHOOLS } from '../constants';
 
 const TYPES = [
@@ -33,10 +34,12 @@ const FILTER = [
 ]
 
 
-export default function AutoComplete({onChangeText, filters=null}) {
+function AutoComplete({onChangeText, filters=null, selectedSchool}) {
 
     const [filterPress,setFilterPress]=useState(false)
+    const [tags, setTags] = useState({[selectedSchool]: true});
 
+    const changeTag = (name)=>{ setTags({...tags, [name]: !tags[name]}) }
 
     return (
         <View style={{width:'100%', alignItems:'center'}}>
@@ -69,19 +72,19 @@ export default function AutoComplete({onChangeText, filters=null}) {
 
                   <Text style={{...styles.text, fontWeight:'bold', fontSize:16, alignSelf:'center'}}>FILTROS</Text>
 
-                  <FilterButtonGroup title='ESCUELAS' data={SCHOOLS}/>
-                  <FilterButtonGroup title='TIPO' data={TYPES}/>
+                  <FilterButtonGroup title='ESCUELAS' data={SCHOOLS} tags={tags} changeTag={changeTag}/>
+                  <FilterButtonGroup title='TIPO' data={TYPES} tags={tags} changeTag={changeTag}/>
                   
                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                   <Button 
                     text={'Quitar filtros'} 
                     type='PRIMARY'
-                    onPress={null} 
+                    onPress={()=>setTags({})} 
                     viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
                   <Button 
                     text={'Aplicar filtros'} 
                     type='PRIMARY'
-                    onPress={null} 
+                    onPress={() => setFilterPress(false)} 
                     viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
                   </View>
 
@@ -89,18 +92,37 @@ export default function AutoComplete({onChangeText, filters=null}) {
                 
                 :null
             }
+
+            <TagGroup data={Object.entries(tags).filter(item => item[1]).map(item => item[0])} changeTag={changeTag} /> 
               
         </View>
     );
 }
 
-function FilterButtonGroup({title=null,data}) {
+
+function TagGroup({data, changeTag}) {
+
+  const tags=data.map((tag)=>  
+    <Tag 
+      text={tag} 
+      onPress={()=>changeTag(tag)} />
+  );
+
+  return(
+    <View style={styles.tagGroup}>
+      {tags}
+    </View>                
+  );
+}
+
+
+function FilterButtonGroup({title=null,data, tags, changeTag}) {
 
   const buttons=data.map((item)=>  
     <Button 
       text={item.name} 
-      onPress={null} 
-      type='TAG' 
+      onPress={()=>{changeTag(item.name)}}
+      type={tags[item.name]?'PRESSED_TAG':'TAG'}
       viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}
     />
   );
@@ -118,3 +140,9 @@ function FilterButtonGroup({title=null,data}) {
     </View>                
   );
 }
+
+function mapStateToProps(state) {
+  return { selectedSchool: state.schools.selectedSchool };
+} 
+
+export default connect(mapStateToProps)(AutoComplete);

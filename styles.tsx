@@ -207,4 +207,13 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight:'bold'
   },
+  pressedTagbutton: {
+    fontSize:14,
+    padding:8,
+    color:'#47C4C4',
+    backgroundColor:'white',
+    borderColor: 'white',
+    borderWidth:1,
+    borderRadius:4,
+  },
 });
