@@ -1,45 +1,47 @@
 import React, {useState} from 'react';
-import { View } from 'react-native'
+import { View, FlatList, TouchableHighlight } from 'react-native'
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
 import { AutoComplete, Tag } from '../components';
 import { styles } from '../styles';
 
+import { FileItem } from '../components';
+
 const INSTRUCTIVOS = [
   {
     id: '0',
-    nombre: 'Material 1',
-    tipo: 'VIDEO' ,
-    escuela: ['Kinesiología']
+    name: 'Material 1',
+    type: 'VIDEO' ,
+    schools: ['Kinesiología']
   },
   {
     id: '1',
-    nombre: 'Material 2',
-    tipo: 'DOCUMENTO' ,
-    escuela:['Medicina','Psicología'] 
+    name: 'Material 2',
+    type: 'DOCUMENTO' ,
+    schools:['Medicina','Psicología'] 
   },
   {
     id: '2',
-    nombre: 'Material 3',
-    tipo: 'NORMATIVA' ,
-    escuela: ['Obstetricia y Neonatología']
+    name: 'Material 3',
+    type: 'NORMATIVA' ,
+    schools: ['Obstetricia y Neonatología']
   },
   {
     id: '3',
-    nombre: 'Material 4',
-    tipo: 'DOCUMENTO' ,
-    escuela: ['Kinesiología']
-  },
+    name: 'Material 4 ejemploDeUnNombreSúperLargoParaUnDocumento',
+    type: 'DOCUMENTO' ,
+    schools: ['Kinesiología']
+  }
 ];
 
 
 function Instructivos({navigation, selectedSchool}) {
 
-  const [direcciones, setDirecciones]= useState(INSTRUCTIVOS);
+  const [instructivos, setInstructivos]= useState(INSTRUCTIVOS);
   
   const filterList = (text) => { 
-    return setDirecciones(text ? INSTRUCTIVOS.filter(instructivo => (instructivo.nombre.toLowerCase()).includes(text.toLowerCase()) ): INSTRUCTIVOS)
+    return setInstructivos(text ? instructivos.filter(instructivo => (instructivo.name.toLowerCase()).includes(text.toLowerCase()) ): instructivos)
   }
 
   return (
@@ -51,20 +53,31 @@ function Instructivos({navigation, selectedSchool}) {
        
         <AutoComplete onChangeText={(text)=>filterList(text)} filters='true'/>
         
-        <TagGroup title='tagName' data={INSTRUCTIVOS}/> 
+        <TagGroup data={instructivos} removeTag={(index)=>{ setInstructivos([...instructivos.slice(0,index),...instructivos.slice(index+1)]) }} /> 
         
+        <FlatList
+        style={{width: '80%'}}
+        data={INSTRUCTIVOS}
+        renderItem={({ item }) => 
+          <TouchableHighlight underlayColor='white' onPress={() => {
+              
+            }}>
+            <FileItem title={item.name} type={item.type}/>
+          </TouchableHighlight>
+        }
+      />
 
     </Default>
 //cambiar INSTRUCTIVOS por TAGS marcados
   );
 }
 
-function TagGroup({title=null,data}) {
+function TagGroup({data, removeTag}) {
 
-  const tags=data.map((item)=>  
+  const tags=data.map((item, index)=>  
     <Tag 
-      text={item.nombre} 
-      onPress={null} />
+      text={item.name} 
+      onPress={()=>removeTag(index)} />
   );
 
   return(

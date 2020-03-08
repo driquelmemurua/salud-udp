@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableHighlight} from 'react-native';
+import { View, Text, TouchableWithoutFeedback} from 'react-native';
 import { styles } from '../styles';
 
 function Tag({text, onPress}) {
 
   return (
     <View style={styles.tagContainer}>
-      <TouchableHighlight onPress={onPress}  >
+      <TouchableWithoutFeedback onPress={onPress}  >
         <Text style={styles.text}>
           {text+' X'}
         </Text>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     </View>
 
   );

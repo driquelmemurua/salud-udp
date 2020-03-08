@@ -179,8 +179,8 @@ export const styles = StyleSheet.create({
     paddingBottom:2,
     paddingLeft:4,
     paddingRight:8,
-    marginTop:4,
-    marginRight:4,
+    marginTop:6,
+    marginRight:6,
     backgroundColor:'#19B5B5',
     borderColor: 'white',
     borderWidth:1,
@@ -191,5 +191,20 @@ export const styles = StyleSheet.create({
     flexDirection:'row',
     flexWrap:'wrap',
     justifyContent: 'flex-start'
+  },
+  fileItemContainer: {
+    padding:10,
+    marginTop:8,
+    marginBottom:4,
+    backgroundColor:'#47C4C4',
+    flexDirection:'row'
+  },
+  fileText: {
+    marginTop:2,
+    paddingRight:8,
+    paddingLeft:8,
+    color: 'white',
+    fontSize: 15,
+    fontWeight:'bold'
   },
 });
