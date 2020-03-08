@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
-
-import { AutoComplete } from '../components';
-
+import { AutoComplete, Tag } from '../components';
 
 const INSTRUCTIVOS = [
   {
@@ -44,7 +42,8 @@ function Instructivos({navigation, selectedSchool}) {
       navigation={navigation.goBack}>
        
         <AutoComplete onChangeText={(text)=>filterList(text)} filters='true'/>
-
+        
+        <Tag text='tagName' onPress={null}/>
         
 
     </Default>
