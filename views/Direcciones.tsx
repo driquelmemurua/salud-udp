@@ -1,53 +1,20 @@
-import React, { useState} from 'react';
-
-import { Text, TouchableOpacity, View , SafeAreaView} from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, TextInput, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { Default } from '../layouts';
 import { styles } from '../styles';
-
-import { AutoComplete } from '../components';
-
-const HOSPITALES = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    nombre: 'Hospital 1',
-    dirección: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
-    }
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    nombre: 'Hospital 2',
-    dirección: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
-    }
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    nombre: 'Hospital 3',
-    dirección: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
-    }
-  },
-];
+import { filterBySchool } from '../helpers';
+import { DIRECCIONES } from '../constants';
 
 function Direcciones({navigation, selectedSchool}) {
   
-  const [direcciones, setDirecciones]= useState(HOSPITALES);
-  
+  const [direcciones, setDirecciones]= useState(filterBySchool(DIRECCIONES, selectedSchool));
+
   const filterList = (text) => { 
-    return setDirecciones(text ? HOSPITALES.filter(hospital => (hospital.nombre.toLowerCase()).includes(text.toLowerCase()) ): HOSPITALES)
+    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.nombre.toLowerCase()).includes(text.toLowerCase()) ): ESCUELAS)
   }
 
   return (

@@ -28,24 +28,174 @@ export const DIRECCION_VIEWS = [
   }
 ];
 
+export const CONTACTOS = [
+  {
+    id: 3,
+    name: 'Dra. María Ivonne Moreno',
+    number : '+56912345678',
+    schools: ['Medicina']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Medicina']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Medicina']
+  },
+  {
+    id: 3,
+    name: 'Pamela Torres Parra',
+    number : '+56912345678',
+    schools: ['Enfermería']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Enfermería']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Enfermería']
+  },
+  {
+    id: 3,
+    name: 'Antonio Stecher Guzmán',
+    number : '+56912345678',
+    schools: ['Psicología']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Psicología']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Psicología']
+  },
+  {
+    id: 3,
+    name: 'María José Junqueras',
+    number : '+56912345678',
+    schools: ['Kinesiología']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Kinesiología']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Kinesiología']
+  },
+  {
+    id: 3,
+    name: 'Marcela Puentes Rosales',
+    number : '+56912345678',
+    schools: ['Obstetricia y Neonatología']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Obstetricia y Neonatología']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Obstetricia y Neonatología']
+  },
+  {
+    id: 3,
+    name: 'Geraldine Vives Toledo',
+    number : '+56912345678',
+    schools: ['Odontología']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Odontología']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Odontología']
+  },
+  {
+    id: 3,
+    name: 'Pamela Cornejo Zamorano',
+    number : '+56912345678',
+    schools: ['Tecnología Médica']
+  },
+  {
+    id: 1,
+    name: 'Persona 1',
+    number : '+56912345678',
+    schools: ['Tecnología Médica']
+  },
+  {
+    id: 2,
+    name: 'Persona 2',
+    number : '+56912345678',
+    schools: ['Tecnología Médica']
+  },
+]
+
+export const EMERGENCIAS = [
+  {
+    id: 0,
+    number : '+56975196948',
+    schools: ['*']
+  },
+  {
+    id: 1,
+    number : '+56912345678',
+    schools: ['*']
+  },
+  {
+    id: 2,
+    number : '+56912345678',
+    schools: ['*']
+  },
+]
+
 export const ACCIDENTS_VIEWS = [
   {
     id: 0,
     name: 'Categoría accidente 1',
     uri: 'https://laderasur.com/content/uploads/2018/02/pdf-test.pdf',
-    file: 'pdf-test.pdf'
+    file: 'pdf-test.pdf',
+    schools: ['*']
   },
   {
     id: 1,
     name: 'Categoría accidente 2',
     uri: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    file: 'dummy.pdf'
+    file: 'dummy.pdf',
+    schools: ['*']
   },
   {
     id: 2,
     name: 'Categoría accidente 3',
     uri: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
-    file: 'test.pdf'
+    file: 'test.pdf',
+    schools: ['*']
   }
 ];
 
@@ -53,7 +203,6 @@ export const SCHOOLS = [
   {
     id: 0,
     name: 'Medicina',
-
   },
   {
     id: 1,
@@ -80,3 +229,39 @@ export const SCHOOLS = [
     name: 'Tecnología Médica'
   }
 ]
+
+export const DIRECCIONES = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    nombre: 'Hospital 1',
+    dirección: { 
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    },
+    schools: ['*']
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    nombre: 'Hospital 2',
+    dirección: { 
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    },
+    schools: ['*']
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    nombre: 'Hospital 3',
+    dirección: { 
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    },
+    schools: ['*']
+  },
+];

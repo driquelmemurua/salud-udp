@@ -1,48 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, FlatList, View } from 'react-native';
 import {
   TouchableHighlight
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Linking } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons';
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { FontAwesome } from '@expo/vector-icons';
-
-const contactos = [
-  {
-    id: 3,
-    name: 'Secretario de escuela',
-    number : '+56912345678'
-  },
-  {
-    id: 1,
-    name: 'Persona 1',
-    number : '+56912345678'
-  },
-  {
-    id: 2,
-    name: 'Persona 2',
-    number : '+56912345678'
-  },
-]
-
-const emergencias = [
-  {
-    id: 0,
-    number : '+56975196948'
-  },
-  {
-    id: 1,
-    number : '+56912345678'
-  },
-  {
-    id: 2,
-    number : '+56912345678'
-  },
-]
+import { CONTACTOS, EMERGENCIAS } from '../constants';
+import { filterBySchool } from '../helpers';
 
 function Contactos({navigation, selectedSchool}) {
+  const [filteredContacts,] = useState(filterBySchool(CONTACTOS, selectedSchool));
+  const [filteredEmergencies,] = useState(filterBySchool(EMERGENCIAS, selectedSchool));
+
   return (
     <Default
       title='CONTACTOS'
@@ -51,12 +23,12 @@ function Contactos({navigation, selectedSchool}) {
     >
       <FlatList
         style={{width: '80%', flexGrow: 0, paddingBottom:50 }}
-        data={contactos}
+        data={filteredContacts}
         renderItem={({ item }) => <PhoneContact name={item.name} number={item.number}/>}
       />
       <FlatList
         style={{width: '80%', flexGrow: 0}}
-        data={emergencias}
+        data={filteredEmergencies}
         renderItem={({ item }) => <PhoneContact number={item.number}/>}
       />
     </Default>
@@ -74,7 +46,7 @@ function PhoneContact({ name = null, number }){
     <View style={name ? styles.contactList : styles.emergencyContactList}>
       {
         name ? 
-        <Text style={{...styles.text,textAlignVertical:'center'}}>
+        <Text style={{...styles.text,textAlignVertical:'center', flexWrap: 'wrap', flex: 1}}>
           {name}
         </Text> : null 
       }
