@@ -45,6 +45,8 @@ function Instructivos({navigation, selectedSchool}) {
        
         <AutoComplete onChangeText={(text)=>filterList(text)} filters='true'/>
 
+        
+
     </Default>
 
   );
