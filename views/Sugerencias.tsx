@@ -1,15 +1,10 @@
 import React from 'react';
-import { Default } from '../layouts';
-import { View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import { styles } from '../styles';
 
 function Sugerencias({navigation}) {
  
-  const [valueone, onChangeTextone] = React.useState('OMG ITS HAPPENING 4 REAL');
-
-
   return (
   
       <WebView 
