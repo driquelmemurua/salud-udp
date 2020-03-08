@@ -8,14 +8,14 @@ import { Default } from '../layouts';
 import { styles } from '../styles';
 import { filterBySchool } from '../helpers';
 import { AutoComplete } from '../components';
-import { DIRECCIONES } from '../constants';
+import { DIRECCIONES, I_DIRECCIONES } from '../constants';
 
 function Direcciones({navigation, selectedSchool}) {
   
   const [direcciones, setDirecciones]= useState(filterBySchool(DIRECCIONES, selectedSchool));
 
   const filterList = (text) => { 
-    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.nombre.toLowerCase()).includes(text.toLowerCase()) ): DIRECCIONES)
+    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.name.toLowerCase()).includes(text.toLowerCase()) ): DIRECCIONES)
   }
 
   return (
@@ -29,10 +29,10 @@ function Direcciones({navigation, selectedSchool}) {
       <SafeAreaView style={styles.containerFlatList}>
         <FlatList
           data={direcciones}
-          renderItem={({ item }) => 
-            <TouchableOpacity onPress={() => navigation.navigate('Dirección', {name: item.nombre, dirección: item.dirección})}>
+          renderItem={({ item }: { item: I_DIRECCIONES}) => 
+            <TouchableOpacity onPress={() => navigation.navigate('Dirección', {name: item.name, dirección: item.coordinates})}>
               <View style={styles.listItem}>
-                <Text style={styles.text}>{item.nombre}</Text>
+                <Text style={styles.text}>{item.name}</Text>
               </View>
             </TouchableOpacity>
           }

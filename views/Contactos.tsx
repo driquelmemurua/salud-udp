@@ -8,7 +8,7 @@ import { Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { CONTACTOS, EMERGENCIAS } from '../constants';
+import { CONTACTOS, I_CONTACTOS, EMERGENCIAS, I_EMERGENCIAS } from '../constants';
 import { filterBySchool } from '../helpers';
 
 function Contactos({navigation, selectedSchool}) {
@@ -24,12 +24,12 @@ function Contactos({navigation, selectedSchool}) {
       <FlatList
         style={{width: '80%', flexGrow: 0, paddingBottom:50 }}
         data={filteredContacts}
-        renderItem={({ item }) => <PhoneContact name={item.name} number={item.number}/>}
+        renderItem={({ item }: { item: I_CONTACTOS }) => <PhoneContact name={item.name} number={item.number}/>}
       />
       <FlatList
         style={{width: '80%', flexGrow: 0}}
         data={filteredEmergencies}
-        renderItem={({ item }) => <PhoneContact number={item.number}/>}
+        renderItem={({ item }: { item: I_EMERGENCIAS }) => <PhoneContact number={item.number}/>}
       />
     </Default>
   );

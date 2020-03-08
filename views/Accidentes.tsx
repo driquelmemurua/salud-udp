@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableWithoutFeedback} from 'react-native';
 import { connect } from 'react-redux';
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { ACCIDENTS_VIEWS } from '../constants';
+import { ACCIDENTS_VIEWS, I_ACCIDENTS_VIEWS } from '../constants';
 import { filterBySchool } from '../helpers';
 
 function Accidentes({navigation, selectedSchool}) {
@@ -17,7 +17,7 @@ function Accidentes({navigation, selectedSchool}) {
       title='Categoría de accidente'>
       <FlatList
         data={accidentsBySchool}
-        renderItem={({ item }) => 
+        renderItem={({ item }: { item: I_ACCIDENTS_VIEWS }) => 
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {uri: item.uri, file: item.file})} >
             <Text style={styles.accidentesItem}>
                 {item.name}
