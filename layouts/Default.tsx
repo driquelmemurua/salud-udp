@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import { styles } from '../styles';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -34,7 +34,7 @@ function Default({children, title = null, subtitle = null, logo = false, navigat
         </View>
       </View>
 
-        {children}
+      {children}
 
     </View>
   );

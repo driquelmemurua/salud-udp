@@ -1,6 +1,6 @@
 import React,{ useState} from 'react';
 
-import { View, TextInput, TouchableOpacity, Modal,Text, Picker} from 'react-native';
+import { View, TextInput, TouchableOpacity, Modal,Text, ScrollView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from '../styles';
 
@@ -33,7 +33,7 @@ const FILTER = [
 ]
 
 
-function AutoComplete({onChangeText, filters=null}) {
+export default function AutoComplete({onChangeText, filters=null}) {
 
     const [filterPress,setFilterPress]=useState(false)
 
@@ -65,24 +65,27 @@ function AutoComplete({onChangeText, filters=null}) {
             </View>
 
             {filterPress? 
-                <View style={styles.containerFilter}>
-                   <FilterButtonGroup title='ESCUELAS' data={SCHOOLS}/>
-                   <FilterButtonGroup title='TIPO' data={TYPES}/>
-                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                    <Button 
-                      text={'Quitar filtros'} 
-                      type='PRIMARY'
-                      onPress={null} 
-                      viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
-                    <Button 
-                      text={'Aplicar filtros'} 
-                      type='PRIMARY'
-                      onPress={null} 
-                      viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
-                    
-                   </View>
-                   
-                </View>
+                <ScrollView style={styles.containerFilter}>
+
+                  <Text style={{...styles.text, fontWeight:'bold', fontSize:16, alignSelf:'center'}}>FILTROS</Text>
+
+                  <FilterButtonGroup title='ESCUELAS' data={SCHOOLS}/>
+                  <FilterButtonGroup title='TIPO' data={TYPES}/>
+                  
+                  <View style={{flexDirection:'row', justifyContent:'space-between', paddingBottom:15}}>
+                  <Button 
+                    text={'Quitar filtros'} 
+                    type='PRIMARY'
+                    onPress={null} 
+                    viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
+                  <Button 
+                    text={'Aplicar filtros'} 
+                    type='PRIMARY'
+                    onPress={null} 
+                    viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
+                  </View>
+
+                </ScrollView>
                 
                 :null
             }
@@ -94,23 +97,24 @@ function AutoComplete({onChangeText, filters=null}) {
 function FilterButtonGroup({title=null,data}) {
 
   const buttons=data.map((item)=>  
-  <Button text={item.name} onPress={null} viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> )
+    <Button 
+      text={item.name} 
+      onPress={null} 
+      type='TAG' 
+      viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}
+    />
+  );
 
   return(
     <View>
       {title?
         <Text style={{...styles.text, fontWeight:'bold', marginStart:5}}>{title}</Text>
-      :null}
+        : null}
       
       <View style={styles.buttonGroup}>
         {buttons}
       </View>
   
-    </View>
-                    
+    </View>                
   );
-    
 }
-
-
-export default AutoComplete;

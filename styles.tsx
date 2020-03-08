@@ -1,6 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
-import Constants from 'expo-constants';
+import { StyleSheet, Dimensions} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -141,6 +139,7 @@ export const styles = StyleSheet.create({
     marginTop: 5,
   },
   containerFilter: {
+    maxHeight: Dimensions.get('window').height*0.6,
     width: '80%',
     marginTop: '5%',
     backgroundColor: '#19B5B5',
@@ -148,7 +147,6 @@ export const styles = StyleSheet.create({
     borderWidth:1,
     borderRadius:1,
     padding:10,
-    justifyContent:'flex-start'
   },
   fixToText: {
     flexDirection: 'row',
