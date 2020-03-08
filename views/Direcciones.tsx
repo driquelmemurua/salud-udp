@@ -7,6 +7,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { Default } from '../layouts';
 import { styles } from '../styles';
 import { filterBySchool } from '../helpers';
+import { AutoComplete } from '../components';
 import { DIRECCIONES } from '../constants';
 
 function Direcciones({navigation, selectedSchool}) {
@@ -14,7 +15,7 @@ function Direcciones({navigation, selectedSchool}) {
   const [direcciones, setDirecciones]= useState(filterBySchool(DIRECCIONES, selectedSchool));
 
   const filterList = (text) => { 
-    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.nombre.toLowerCase()).includes(text.toLowerCase()) ): ESCUELAS)
+    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.nombre.toLowerCase()).includes(text.toLowerCase()) ): DIRECCIONES)
   }
 
   return (
