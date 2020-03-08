@@ -86,7 +86,7 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20
   },
-  autoComplete: {
+  autoCompleteInput: {
     width: '90%',
     height: 40, 
     color: 'white',
@@ -95,8 +95,61 @@ export const styles = StyleSheet.create({
     borderColor: 'white', 
     borderWidth: 1
   },
+  autoCompleteIcon: {
+    width: '10%',
+    height: 40, 
+    marginTop:10,
+    marginLeft:15, 
+    marginRight:15
+  },
+  autoCompleteInputFilter: {
+    width: '80%',
+    height: 40, 
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderColor: 'white', 
+    borderWidth: 1
+  },
+  autoCompleteIconFilter: {
+    width: '15%',
+    height: 40, 
+    marginStart:'5%',
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft:'4%',
+    paddingRight:'4%',
+    borderColor:'white',
+    borderWidth:1,
+    borderRadius:1,
+  },
+  autoCompleteIconFilterSelected: {
+    width: '15%',
+    height: 40, 
+    marginStart:'5%',
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft:'4%',
+    paddingRight:'4%',
+    backgroundColor: 'white',
+    borderColor:'white',
+    borderWidth:1,
+    borderRadius:1,
+  },
   containerFlatList: {
     width:'80%',
     marginTop: 5,
-  }
+  },
+  containerFilter: {
+    height: 200,
+    width: '80%',
+    marginTop: '5%',
+
+    
+    backgroundColor: '#19B5B5',
+    borderColor:'white',
+    borderWidth:1,
+    borderRadius:1,
+  
+  },
 });

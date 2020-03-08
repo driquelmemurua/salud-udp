@@ -1,16 +1,13 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
+
+import { Text, TouchableOpacity, View , SafeAreaView} from 'react-native';
+import { connect } from 'react-redux';
+import { FlatList } from 'react-native-gesture-handler';
+
 import { Default } from '../layouts';
 import { styles } from '../styles';
 
-import Autocomplete from 'react-native-autocomplete-input';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { TextInput } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { FlatList, Directions } from 'react-native-gesture-handler';
-
-import { SafeAreaView} from 'react-native';
-import Constants from 'expo-constants';
-import { connect } from 'react-redux';
+import { AutoComplete } from '../components';
 
 const HOSPITALES = [
   {
@@ -58,16 +55,8 @@ function Direcciones({navigation, selectedSchool}) {
       navigation={navigation.goBack}
       title='DIRECCIONES'
       subtitle={selectedSchool}>
-      <View style={{flexDirection:'row', width:'80%'}}>
-        <TextInput
-        selectionColor={'#93d9cd'}
-        style={styles.autoComplete}
-        onChangeText={text => filterList(text)}
-        />
-        <View style={{marginTop:10, marginLeft:15, marginRight:15}}>
-          <Ionicons name="ios-search" size={24} color="white" />
-        </View>
-      </View>
+      
+      <AutoComplete onChangeText={(text)=>filterList(text)}/>
      
       <SafeAreaView style={styles.containerFlatList}>
         <FlatList
