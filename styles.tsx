@@ -173,5 +173,23 @@ export const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth:2,
     borderRadius:4,
-  }
+  },
+  tagContainer: {
+    paddingTop:2,
+    paddingBottom:2,
+    paddingLeft:4,
+    paddingRight:8,
+    marginTop:4,
+    marginRight:4,
+    backgroundColor:'#19B5B5',
+    borderColor: 'white',
+    borderWidth:1,
+    borderRadius:12,
+  },
+  tagGroup:{
+    width:'80%',
+    flexDirection:'row',
+    flexWrap:'wrap',
+    justifyContent: 'flex-start'
+  },
 });

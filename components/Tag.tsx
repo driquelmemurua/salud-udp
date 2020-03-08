@@ -5,10 +5,10 @@ import { styles } from '../styles';
 function Tag({text, onPress}) {
 
   return (
-    <View >
+    <View style={styles.tagContainer}>
       <TouchableHighlight onPress={onPress}  >
         <Text style={styles.text}>
-          {text}
+          {text+' X'}
         </Text>
       </TouchableHighlight>
     </View>

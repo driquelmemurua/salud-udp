@@ -1,27 +1,35 @@
 import React, {useState} from 'react';
+import { View } from 'react-native'
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
 import { AutoComplete, Tag } from '../components';
+import { styles } from '../styles';
 
 const INSTRUCTIVOS = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: '0',
     nombre: 'Material 1',
     tipo: 'VIDEO' ,
     escuela: ['Kinesiología']
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bb',
+    id: '1',
     nombre: 'Material 2',
     tipo: 'DOCUMENTO' ,
     escuela:['Medicina','Psicología'] 
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28b3',
+    id: '2',
     nombre: 'Material 3',
     tipo: 'NORMATIVA' ,
     escuela: ['Obstetricia y Neonatología']
+  },
+  {
+    id: '3',
+    nombre: 'Material 4',
+    tipo: 'DOCUMENTO' ,
+    escuela: ['Kinesiología']
   },
 ];
 
@@ -43,11 +51,26 @@ function Instructivos({navigation, selectedSchool}) {
        
         <AutoComplete onChangeText={(text)=>filterList(text)} filters='true'/>
         
-        <Tag text='tagName' onPress={null}/>
+        <TagGroup title='tagName' data={INSTRUCTIVOS}/> 
         
 
     </Default>
+//cambiar INSTRUCTIVOS por TAGS marcados
+  );
+}
 
+function TagGroup({title=null,data}) {
+
+  const tags=data.map((item)=>  
+    <Tag 
+      text={item.nombre} 
+      onPress={null} />
+  );
+
+  return(
+    <View style={styles.tagGroup}>
+      {tags}
+    </View>                
   );
 }
 
