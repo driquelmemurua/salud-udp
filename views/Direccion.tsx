@@ -8,7 +8,6 @@ import  MapView, { Marker } from 'react-native-maps';
 import { View } from 'react-native';
 import { styles } from '../styles';
 import { FontAwesome } from '@expo/vector-icons';
-import { CONTACTOS, I_CONTACTOS, EMERGENCIAS, I_EMERGENCIAS } from '../constants';
 
 
 export default function Direccion({ route, navigation }){

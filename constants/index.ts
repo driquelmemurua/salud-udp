@@ -319,3 +319,5 @@ export const TYPES = [
     name: 'Normativa',
   }
 ]
+
+export const GOOGLE_FORM_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSc_CoJrpcmeq_z4AJzUdwYZFymo0uWgB0ZW8dyKez8DjAr0tA/viewform';
