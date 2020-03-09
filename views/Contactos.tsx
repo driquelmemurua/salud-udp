@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Text, FlatList, View } from 'react-native';
-import {
-  TouchableHighlight
-} from 'react-native';
+import { Text, FlatList, View, TouchableHighlight, Linking } from 'react-native';
+
 import { connect } from 'react-redux';
-import { Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
+
 import { Default } from '../layouts';
 import { styles } from '../styles';
 import { CONTACTOS, I_CONTACTOS, EMERGENCIAS, I_EMERGENCIAS } from '../constants';
