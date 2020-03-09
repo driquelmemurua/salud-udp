@@ -1,45 +1,31 @@
-import React,{ useState} from 'react';
+import React,{ useState, useEffect } from 'react';
 
 import { View, TextInput, TouchableOpacity, Text, ScrollView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
+
 import { styles } from '../styles';
-
 import { Button, Tag } from '../components';
-import { SCHOOLS } from '../constants';
+import { SCHOOLS, TYPES } from '../constants';
 
-const TYPES = [
-  {
-    id: 0,
-    name: 'Vídeo',
-  },
-  {
-    id: 1,
-    name: 'Documento'
-  },
-  {
-    id: 2,
-    name: 'Normativa',
-  }
-]
-const FILTER = [
-  {
-    id: 0,
-    name: 'Quitar filtros',
-  },
-  {
-    id: 1,
-    name: 'Aplicar filtros'
-  }
-]
-
-
-function AutoComplete({onChangeText, filters=null, selectedSchool}) {
+function AutoComplete({applyFilters, filters=null, selectedSchool}) {
 
     const [filterPress,setFilterPress]=useState(false)
+    const [filterText, setFilterText]=useState('');
     const [tags, setTags] = useState({[selectedSchool]: true});
+    const filterTypes = TYPES.filter(type => tags[type.name]).length > 0;
+    const filterSchools = SCHOOLS.filter(school => tags[school.name]).length > 0;
 
-    const changeTag = (name)=>{ setTags({...tags, [name]: !tags[name]}) }
+    useEffect(() => {
+      applyFilters(filterText, tags, filterTypes, filterSchools);
+    },[filterText, tags])
+
+    useEffect(()=>{
+      if(!filterPress)
+        applyFilters(filterText, tags, filterTypes, filterSchools);
+    },[filterPress, tags])
+
+    const changeTag = (name)=>{setTags({...tags, [name]: !tags[name]})}
 
     return (
         <View style={{width:'100%', alignItems:'center'}}>
@@ -48,7 +34,7 @@ function AutoComplete({onChangeText, filters=null, selectedSchool}) {
                 <TextInput
                     selectionColor={'#93d9cd'}
                     style={filters? styles.autoCompleteInputFilter:styles.autoCompleteInput}
-                    onChangeText={onChangeText}
+                    onChangeText={(text) => setFilterText(text)}
                 />
                 {filters? 
                 <View style={{width:'100%'}}>
@@ -84,7 +70,9 @@ function AutoComplete({onChangeText, filters=null, selectedSchool}) {
                   <Button 
                     text={'Aplicar filtros'} 
                     type='PRIMARY'
-                    onPress={() => setFilterPress(false)} 
+                    onPress={() => {
+                      setFilterPress(false)}
+                    } 
                     viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}/> 
                   </View>
 
@@ -93,8 +81,10 @@ function AutoComplete({onChangeText, filters=null, selectedSchool}) {
                 :null
             }
 
+            {filters?
             <TagGroup data={Object.entries(tags).filter(item => item[1]).map(item => item[0])} changeTag={changeTag} /> 
-              
+            :null}
+             
         </View>
     );
 }
@@ -102,8 +92,9 @@ function AutoComplete({onChangeText, filters=null, selectedSchool}) {
 
 function TagGroup({data, changeTag}) {
 
-  const tags=data.map((tag)=>  
-    <Tag 
+  const tags=data.map((tag,index)=>  
+    <Tag
+      key={index}
       text={tag} 
       onPress={()=>changeTag(tag)} />
   );
@@ -118,9 +109,10 @@ function TagGroup({data, changeTag}) {
 
 function FilterButtonGroup({title=null,data, tags, changeTag}) {
 
-  const buttons=data.map((item)=>  
-    <Button 
-      text={item.name} 
+  const buttons=data.map((item,index)=>  
+    <Button
+      key={index}
+      text={item.name}
       onPress={()=>{changeTag(item.name)}}
       type={tags[item.name]?'PRESSED_TAG':'TAG'}
       viewStyle={{marginLeft:5, marginRight:5, marginTop:8, marginBottom:8}}
