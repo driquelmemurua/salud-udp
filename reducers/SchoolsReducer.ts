@@ -3,7 +3,6 @@ import { AsyncStorage } from 'react-native';
 const _storeSchool = async (school) => {
   try {
     await AsyncStorage.setItem('selectedSchool', school);
-    console.log(school);
   } catch (error) {
     // Error saving data
   }

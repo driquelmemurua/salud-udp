@@ -18,8 +18,6 @@ export default function Direccion({ route, navigation }){
   function mapAddress(address) {
     openMap({ query: address});
   }
-  console.log(coordinates.latitude);
-
 
   return (
       <Default
