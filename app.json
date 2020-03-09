@@ -12,9 +12,9 @@
     "android": {
       "package": "com.sanbar.saludapp",
       "versionCode": 1,
-      "googleMaps": {
-        "apiKey": "55C0EC0557A79686532D1FF395383016E5A3598F"
-      }
+      "config": {
+        "googleMaps": { "apiKey": "55C0EC0557A79686532D1FF395383016E5A3598F" }   
+     }
     },
     "version": "1.0.0",
     "orientation": "portrait",
