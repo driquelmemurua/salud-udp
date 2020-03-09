@@ -262,41 +262,60 @@ export interface I_DIRECCIONES {
   id: string,
   name: string,
   coordinates: I_COORDINATES,
+  address: string,
   schools: Array<string>
 }
 
 export const DIRECCIONES: Array<I_DIRECCIONES> = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    name: 'Hospital 1',
+    name: 'Costanera center 1',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.417422, 
+      longitude: -70.606427,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
+    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
     schools: ['*']
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    name: 'Hospital 2',
+    name: 'Costanera center 2',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.417422, 
+      longitude: -70.606427,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
+    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
     schools: ['*']
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    name: 'Hospital 3',
+    name: 'Costanera center 3',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.417422, 
+      longitude: -70.606427,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
+    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
     schools: ['*']
   },
 ];
+
+export const TYPES = [
+  {
+    id: 0,
+    name: 'Vídeo',
+  },
+  {
+    id: 1,
+    name: 'Documento'
+  },
+  {
+    id: 2,
+    name: 'Normativa',
+  }
+]
