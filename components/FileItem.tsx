@@ -7,9 +7,9 @@ function FileItem({title,type}) {
 
   return (
     <View style={styles.fileItemContainer}>
-      {type=='VIDEO'?
+      {type=='Vídeo'?
         <Ionicons name="md-play-circle" size={24} color={"white"} />
-      :type=='DOCUMENTO'||type=='NORMATIVA'?
+      :type=='Documento'||type=='Normativa'?
         <View style={{paddingTop:2}}>
           <FontAwesome name="file" size={20} color="white" />
         </View>

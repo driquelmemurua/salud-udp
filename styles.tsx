@@ -216,4 +216,16 @@ export const styles = StyleSheet.create({
     borderWidth:1,
     borderRadius:4,
   },
+  mapContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: '92%',
+    marginTop:'10%'
+  },
+
+
 });

@@ -27,9 +27,7 @@ function Menu({navigation, selectedSchool, updateSchool}) {
 
   const _retrieveSchool = async () => {
     try {
-      console.log('RETRIEVE SCHOOL');
       const value = await AsyncStorage.getItem('selectedSchool');
-      console.log(value)
       return value;
     } catch (error) {
       console.log(error)

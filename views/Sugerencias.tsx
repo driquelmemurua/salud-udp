@@ -3,12 +3,14 @@ import { WebView } from 'react-native-webview';
 
 import { styles } from '../styles';
 
+import { GOOGLE_FORM_URI } from '../constants';
+
 function Sugerencias({navigation}) {
  
   return (
   
       <WebView 
-        source= {{uri: 'https://docs.google.com/forms/d/e/1FAIpQLSc_CoJrpcmeq_z4AJzUdwYZFymo0uWgB0ZW8dyKez8DjAr0tA/viewform'}}
+        source= {{uri: GOOGLE_FORM_URI}}
         style= {styles.loginWebView}
       />
   );

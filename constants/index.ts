@@ -262,41 +262,62 @@ export interface I_DIRECCIONES {
   id: string,
   name: string,
   coordinates: I_COORDINATES,
+  address: string,
   schools: Array<string>
 }
 
 export const DIRECCIONES: Array<I_DIRECCIONES> = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    name: 'Hospital 1',
+    name: 'Clínica Odontológica UDP',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.449539,
+      longitude: -70.661003,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
-    schools: ['*']
+    address:'Ejército 219, Santiago, Chile',
+    schools: ['Odontología']
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    name: 'Hospital 2',
+    name: 'Hospital de la Dirección de Previsión de Carabineros de Chile (DIPRECA)',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.416691, 
+      longitude: -70.528219,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
-    schools: ['*']
+    address:'Vital Apoquindo 1200, Las Condes, Región Metropolitana',
+    schools: ['Medicina']
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    name: 'Hospital 3',
+    name: 'Corporación Municipal de Educación, Salud y Recreación de La Florida, CESFAM Los Castaños',
     coordinates: { 
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      latitude: -33.517261, 
+      longitude: -70.592905,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
     },
-    schools: ['*']
+    address:'Yokohama 6865, La Florida, Santiago, Región Metropolitana',
+    schools: ['Obstetricia y Neonatología']
   },
 ];
+
+export const TYPES = [
+  {
+    id: 0,
+    name: 'Vídeo',
+  },
+  {
+    id: 1,
+    name: 'Documento'
+  },
+  {
+    id: 2,
+    name: 'Normativa',
+  }
+]
+
+export const GOOGLE_FORM_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSc_CoJrpcmeq_z4AJzUdwYZFymo0uWgB0ZW8dyKez8DjAr0tA/viewform';

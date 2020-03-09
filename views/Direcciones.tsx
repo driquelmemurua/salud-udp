@@ -24,13 +24,13 @@ function Direcciones({navigation, selectedSchool}) {
       title='DIRECCIONES'
       subtitle={selectedSchool}>
       
-      <AutoComplete onChangeText={(text)=>filterList(text)}/>
+      <AutoComplete applyFilters={(text)=>filterList(text)}/>
      
       <SafeAreaView style={styles.containerFlatList}>
         <FlatList
           data={direcciones}
           renderItem={({ item }: { item: I_DIRECCIONES}) => 
-            <TouchableOpacity onPress={() => navigation.navigate('Dirección', {name: item.name, dirección: item.coordinates})}>
+            <TouchableOpacity onPress={() => navigation.navigate('Dirección', {name: item.name, coordinates: item.coordinates, address: item.address})}>
               <View style={styles.listItem}>
                 <Text style={styles.text}>{item.name}</Text>
               </View>
@@ -39,8 +39,6 @@ function Direcciones({navigation, selectedSchool}) {
           keyExtractor={item => item.id}
         />
       </SafeAreaView>
-      
-
     </Default>
   );
 }
