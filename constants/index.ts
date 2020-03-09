@@ -269,39 +269,39 @@ export interface I_DIRECCIONES {
 export const DIRECCIONES: Array<I_DIRECCIONES> = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    name: 'Costanera center 1',
+    name: 'Clínica Odontológica UDP',
     coordinates: { 
-      latitude: -33.417422, 
-      longitude: -70.606427,
+      latitude: -33.449539,
+      longitude: -70.661003,
       latitudeDelta: 0.01,
       longitudeDelta: 0.01
     },
-    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
-    schools: ['*']
+    address:'Ejército 219, Santiago, Chile',
+    schools: ['Odontología']
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    name: 'Costanera center 2',
+    name: 'Hospital de la Dirección de Previsión de Carabineros de Chile (DIPRECA)',
     coordinates: { 
-      latitude: -33.417422, 
-      longitude: -70.606427,
+      latitude: -33.416691, 
+      longitude: -70.528219,
       latitudeDelta: 0.01,
       longitudeDelta: 0.01
     },
-    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
-    schools: ['*']
+    address:'Vital Apoquindo 1200, Las Condes, Región Metropolitana',
+    schools: ['Medicina']
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    name: 'Costanera center 3',
+    name: 'Corporación Municipal de Educación, Salud y Recreación de La Florida, CESFAM Los Castaños',
     coordinates: { 
-      latitude: -33.417422, 
-      longitude: -70.606427,
+      latitude: -33.517261, 
+      longitude: -70.592905,
       latitudeDelta: 0.01,
       longitudeDelta: 0.01
     },
-    address:'Av. Andrés Bello 2425, Providencia, Región Metropolitana',
-    schools: ['*']
+    address:'Yokohama 6865, La Florida, Santiago, Región Metropolitana',
+    schools: ['Obstetricia y Neonatología']
   },
 ];
 
