@@ -18,7 +18,7 @@ function Accidentes({navigation, selectedSchool}) {
       <FlatList
         data={accidentsBySchool}
         renderItem={({ item }: { item: I_ACCIDENTS_VIEWS }) => 
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {uri: item.uri, file: item.file})} >
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {file: item.file})} >
             <Text style={styles.accidentesItem}>
                 {item.name}
             </Text>

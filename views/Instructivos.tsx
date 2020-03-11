@@ -1,77 +1,78 @@
-import React, {useState} from 'react';
-import { View, FlatList, TouchableWithoutFeedback } from 'react-native'
+import React from 'react';
+import { FlatList } from 'react-native'
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
-import { AutoComplete, Tag } from '../components';
-import { styles } from '../styles';
-import { TYPES, SCHOOLS } from '../constants';
-import { FileItem } from '../components';
+import { AutoCompleteWithFilters, FileItem } from '../components';
+import { useFilterByText, useFilterByTags } from '../hooks';
+import { composeFilters } from '../helpers';
 
 const INSTRUCTIVOS = [
   {
     id: '0',
-    name: 'Material 1',
-    type: 'Vídeo' ,
-    schools: ['Kinesiología']
+    name: 'Centro de Simulación Clínica UDP',
+    type: 'Vídeo',
+    file: 'testVideo',
+    schools: 'Kinesiología'
   },
   {
     id: '1',
-    name: 'Material 2',
+    name: 'Documento 1',
     type: 'Documento' ,
-    schools:['Medicina','Psicología'] 
+    file: 'first',
+    schools: ['Medicina','Psicología'] 
   },
   {
     id: '2',
-    name: 'Material 3',
-    type: 'Normativa' ,
+    name: 'Documento 2',
+    type: 'Documento',
+    file: 'second',
     schools: ['Obstetricia y Neonatología']
   },
   {
     id: '3',
-    name: 'Material 4',
-    type: 'Documento' ,
-    schools: ['Kinesiología']
+    name: 'Documento 3',
+    file: 'third',
+    type: 'Documento'
   }
 ];
 
-
 function Instructivos({navigation, selectedSchool}) {
+  const [hasName, onChangeText] = useFilterByText('name');
+  const [schools, schoolActions, hasSchool] = useFilterByTags('schools', {[selectedSchool]: true});
+  const [types, typeActions, hasType] = useFilterByTags('type');
+  const filters = composeFilters(hasName, hasSchool, hasType);
 
-  const [instructivos, setInstructivos]= useState(INSTRUCTIVOS);
-  
-  const filterList = (text, tags, filterTags, filterSchools) => { 
-    const filteredByText = text ? 
-      instructivos.filter(instructivo => (instructivo.name.toLowerCase()).includes(text.toLowerCase()) ): 
-      INSTRUCTIVOS;
-    const filteredByTypes = filterTags ? filteredByText.filter(item => tags[item.type]) : filteredByText;
-    const filteredBySchools = filterSchools ? filteredByTypes.filter(item => item.schools.filter(school => tags[school]).length > 0) : filteredByTypes;
-    setInstructivos(
-      filteredBySchools
-    )
+  const instructivos = INSTRUCTIVOS.filter(filters);
+
+  console.log(instructivos)
+  const tags = {
+    types,
+    schools
+  }
+  const actions = {
+    typeActions,
+    schoolActions
   }
 
   return (
-
     <Default
       title='INSTRUCTIVOS'
       subtitle={selectedSchool}
-      navigation={navigation.goBack}>
-       
-        <AutoComplete applyFilters={(text, tags, filterTags, filterSchool)=>filterList(text, tags, filterTags, filterSchool)} filters='true'/>
-        
-        <FlatList
+      navigation={navigation.goBack}
+    >
+      <AutoCompleteWithFilters
+        onChangeText={onChangeText}
+        tags={tags}
+        actions={actions}
+      />
+      <FlatList
         style={{width: '80%'}}
         data={instructivos}
-        renderItem={({ item }) => 
-          <TouchableWithoutFeedback  onPress={() => {
-              
-            }}>
-            <FileItem title={item.name} type={item.type}/>
-          </TouchableWithoutFeedback>
+        renderItem={({ item }) =>
+          <FileItem title={item.name} type={item.type} onPress={() => {navigation.navigate(item.type, {file: item.file, name: item.name})}}/>
         }
       />
-
     </Default>
   );
 }

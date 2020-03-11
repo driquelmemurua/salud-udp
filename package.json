@@ -25,7 +25,8 @@
     "react-native-webview": "7.4.3",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "rn-pdf-reader-js": "^0.7.2"
+    "rn-pdf-reader-js": "^0.7.2",
+    "expo-av": "~8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

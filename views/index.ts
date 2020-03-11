@@ -6,4 +6,6 @@ export {default as Instructivos} from './Instructivos';
 export {default as Sugerencias} from './Sugerencias';
 export {default as Accidentes} from './Accidentes';
 export {default as Flujograma} from './Flujograma';
-export {default as Direccion} from './Direccion'
+export {default as Direccion} from './Direccion';
+export {default as Documento} from './Documento';
+export {default as Video} from './Video';

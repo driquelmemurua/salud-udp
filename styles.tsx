@@ -84,21 +84,34 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20
   },
-  autoCompleteInput: {
-    width: '90%',
-    height: 40, 
-    color: 'white',
-    paddingLeft: 10,
-    paddingRight: 10,
+  autoComplete: {
+    width:'80%', 
+    flexDirection: "row",
+    alignItems:'center', 
     borderColor: 'white', 
-    borderWidth: 1
-  },
-  autoCompleteIcon: {
-    width: '10%',
+    borderWidth: 1, 
+    justifyContent: 'space-between', 
+    paddingHorizontal: 10, 
     height: 40, 
-    marginTop:10,
-    marginLeft:15, 
-    marginRight:15
+    alignContent:'center'
+  },
+  filtersBox: {
+    borderWidth: 1, 
+    borderColor: 'white',
+    borderRadius:1,
+    padding:10,
+    height: Dimensions.get('window').height*0.45,
+    marginTop: 8
+  },
+  filtersButton: {
+    height: 40, 
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft:10,
+    paddingRight:10,
+    borderColor:'white',
+    borderWidth:1,
+    borderRadius:1,
   },
   autoCompleteInputFilter: {
     width: '80%',
@@ -109,44 +122,9 @@ export const styles = StyleSheet.create({
     borderColor: 'white', 
     borderWidth: 1
   },
-  autoCompleteIconFilter: {
-    width: '15%',
-    height: 40, 
-    marginStart:'5%',
-    paddingTop:5,
-    paddingBottom:5,
-    paddingLeft:'4%',
-    paddingRight:'4%',
-    borderColor:'white',
-    borderWidth:1,
-    borderRadius:1,
-  },
-  autoCompleteIconFilterSelected: {
-    width: '15%',
-    height: 40, 
-    marginStart:'5%',
-    paddingTop:5,
-    paddingBottom:5,
-    paddingLeft:'4%',
-    paddingRight:'4%',
-    backgroundColor: 'white',
-    borderColor:'white',
-    borderWidth:1,
-    borderRadius:1,
-  },
   containerFlatList: {
     width:'80%',
     marginTop: 5,
-  },
-  containerFilter: {
-    maxHeight: Dimensions.get('window').height*0.6,
-    width: '80%',
-    marginTop: '5%',
-    backgroundColor: '#19B5B5',
-    borderColor:'white',
-    borderWidth:1,
-    borderRadius:1,
-    padding:10,
   },
   fixToText: {
     flexDirection: 'row',

@@ -1,3 +1,5 @@
+
+
 export const CONTENT_VIEWS = [
   {
     id: '0',
@@ -191,34 +193,10 @@ export const EMERGENCIAS: Array<I_EMERGENCIAS> = [
 export interface I_ACCIDENTS_VIEWS {
   id: string,
   name: string,
-  uri: string,
   file: string,
   schools: Array<string>
 }
 
-export const ACCIDENTS_VIEWS: Array<I_ACCIDENTS_VIEWS> = [
-  {
-    id: '0',
-    name: 'Categoría accidente 1',
-    uri: 'https://laderasur.com/content/uploads/2018/02/pdf-test.pdf',
-    file: 'pdf-test.pdf',
-    schools: ['*']
-  },
-  {
-    id: '1',
-    name: 'Categoría accidente 2',
-    uri: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    file: 'dummy.pdf',
-    schools: ['*']
-  },
-  {
-    id: '2',
-    name: 'Categoría accidente 3',
-    uri: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
-    file: 'test.pdf',
-    schools: ['*']
-  }
-];
 
 export const SCHOOLS = [
   {
@@ -263,7 +241,7 @@ export interface I_DIRECCIONES {
   name: string,
   coordinates: I_COORDINATES,
   address: string,
-  schools: Array<string>
+  schools?: Array<string> | undefined
 }
 
 export const DIRECCIONES: Array<I_DIRECCIONES> = [
@@ -277,7 +255,6 @@ export const DIRECCIONES: Array<I_DIRECCIONES> = [
       longitudeDelta: 0.01
     },
     address:'Ejército 219, Santiago, Chile',
-    schools: ['Odontología']
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -289,7 +266,6 @@ export const DIRECCIONES: Array<I_DIRECCIONES> = [
       longitudeDelta: 0.01
     },
     address:'Vital Apoquindo 1200, Las Condes, Región Metropolitana',
-    schools: ['Medicina']
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -301,7 +277,6 @@ export const DIRECCIONES: Array<I_DIRECCIONES> = [
       longitudeDelta: 0.01
     },
     address:'Yokohama 6865, La Florida, Santiago, Región Metropolitana',
-    schools: ['Obstetricia y Neonatología']
   },
 ];
 
@@ -321,3 +296,25 @@ export const TYPES = [
 ]
 
 export const GOOGLE_FORM_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSc_CoJrpcmeq_z4AJzUdwYZFymo0uWgB0ZW8dyKez8DjAr0tA/viewform';
+
+export const ACCIDENTS_VIEWS: Array<I_ACCIDENTS_VIEWS> = [
+  {
+    id: '0',
+    name: 'Categoría accidente 1',
+    file: 'first',
+    schools: ['*'],
+
+  },
+  {
+    id: '1',
+    name: 'Categoría accidente 2',
+    file: 'second',
+    schools: ['*']
+  },
+  {
+    id: '2',
+    name: 'Categoría accidente 3',
+    file: 'third',
+    schools: ['*'],
+  }
+];

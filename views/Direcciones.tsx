@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import { SafeAreaView, TextInput, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Ionicons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { filterBySchool } from '../helpers';
+import { filterByProp, composeFilters } from '../helpers';
 import { AutoComplete } from '../components';
 import { DIRECCIONES, I_DIRECCIONES } from '../constants';
+import { useFilterByText, } from '../hooks';
 
 function Direcciones({navigation, selectedSchool}) {
-  
-  const [direcciones, setDirecciones]= useState(filterBySchool(DIRECCIONES, selectedSchool));
-
-  const filterList = (text) => { 
-    return setDirecciones(text ? DIRECCIONES.filter(hospital => (hospital.name.toLowerCase()).includes(text.toLowerCase()) ): DIRECCIONES)
-  }
+  const [hasName, onChangeText] = useFilterByText('name');
+  const filters = composeFilters(filterByProp('schools', selectedSchool), hasName);
+  const direcciones = DIRECCIONES.filter(filters);
 
   return (
     <Default
@@ -24,7 +21,7 @@ function Direcciones({navigation, selectedSchool}) {
       title='DIRECCIONES'
       subtitle={selectedSchool}>
       
-      <AutoComplete applyFilters={(text)=>filterList(text)}/>
+      <AutoComplete onChangeText={onChangeText}/>
      
       <SafeAreaView style={styles.containerFlatList}>
         <FlatList
