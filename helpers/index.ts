@@ -9,6 +9,10 @@ export function filterByProp(prop, value){
   }
 }
 
+export function filterBySchool(list, school){
+  return list.filter(filterByProp('schools', school));
+}
+
 export function composeFilters(...filters){
   return (item) => filters.reduce((acc, p) => acc && p(item), true)
 }

@@ -10,8 +10,8 @@ import { CONTACTOS, I_CONTACTOS, EMERGENCIAS, I_EMERGENCIAS } from '../constants
 import { filterBySchool } from '../helpers';
 
 function Contactos({navigation, selectedSchool}) {
-  const [filteredContacts,] = useState(filterBySchool(CONTACTOS, selectedSchool));
-  const [filteredEmergencies,] = useState(filterBySchool(EMERGENCIAS, selectedSchool));
+  const filteredContacts = filterBySchool(CONTACTOS, selectedSchool);
+  const filteredEmergencies = filterBySchool(EMERGENCIAS, selectedSchool);
 
   return (
     <Default

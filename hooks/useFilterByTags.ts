@@ -40,7 +40,7 @@ function filterByTags(tags, prop){
 }
 
 export default function useFilterByTags(prop, initialTags = {}){
-  const [state, dispatch] = useReducer(tagsReducer, {tags: initialTags, filter: returnTrue});
+  const [state, dispatch] = useReducer(tagsReducer, {tags: initialTags, filter: filterByTags(initialTags, prop)});
 
   const { tags, filter } = state;
   const actions = {
