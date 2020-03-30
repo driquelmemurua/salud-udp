@@ -1,6 +1,6 @@
 
 
-export { I_CONTACTOS I_EMERGENCIAS } from './contactos';
+export { I_CONTACTOS, I_EMERGENCIAS } from './contactos';
 export { CONTENT_VIEWS, DIRECCION_VIEWS } from './views';
 export { I_DIRECCIONES } from './direcciones';
 export { I_ACCIDENTS_VIEWS } from './accidentes';
