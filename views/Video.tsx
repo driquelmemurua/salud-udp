@@ -3,10 +3,7 @@ import { Text } from 'react-native';
 import { styles } from '../styles';
 import { Default } from '../layouts';
 import { Video as VideoPlayer } from 'expo-av';
-
-const VIDEOS = {
-  'testVideo': require('../assets/videos/CentroUDP.mp4')
-}
+import { VIDEOS } from '../assets/videos';
 
 export default function Video({ navigation, route }){
   const { file, name } = route.params;

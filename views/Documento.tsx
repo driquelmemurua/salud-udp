@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import PDFReader from 'rn-pdf-reader-js'
 import * as FileSystem from 'expo-file-system';
 import { useFileLoading } from '../hooks';
-import pdfs from '../assets/accidents';
+import pdfs from '../assets/pdfs';
 
 function Documento({ route }) {
   const { file } = route.params;

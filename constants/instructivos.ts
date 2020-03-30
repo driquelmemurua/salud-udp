@@ -3,7 +3,7 @@ export const INSTRUCTIVOS = [
     id: '0',
     name: 'Centro de Simulación Clínica UDP',
     type: 'Vídeo',
-    file: 'testVideo',
+    file: 'centroUDP',
     schools: 'Kinesiología'
   },
   {
