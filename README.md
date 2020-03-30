@@ -6,4 +6,5 @@ Guía para correr con expo:
 4) `npm start`
 
 Guía para buildear:
+
 https://docs.expo.io/versions/latest/distribution/building-standalone-apps/
