@@ -2,7 +2,7 @@ export interface I_CONTACTOS {
   id: string,
   name: string,
   number: string,
-  schools: Array<string>
+  schools?: Array<string>
 }
 
 export const CONTACTOS: Array<I_CONTACTOS> = [
