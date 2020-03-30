@@ -17,7 +17,7 @@ Para cargar un nuevo PDF a la aplicación este debe convertirse a formato Base64
 ```
 Luego en el archivo **index.ts** en esa misma carpeta se debe importar el archivo json y reexportarlo en el default export con el nombre que usted desee utilizar.
 ### Videos
-Para cargar un nuevo video a la aplicación este debe subirse a la carpeta [/assets/videos](https://github.com/driquelmemurua/salud-udp/tree/master/assets/videos) [acá](https://exoplayer.dev/supported-formats.html) se encuentra una lista con los formatos soportados.
+Para cargar un nuevo video a la aplicación este debe subirse a la carpeta [/assets/videos](https://github.com/driquelmemurua/salud-udp/tree/master/assets/videos). [En este enlace](https://exoplayer.dev/supported-formats.html) se encuentra una lista con los formatos soportados.
 Luego se debe agregar el nuevo video subido al json ubicado en el archivo **index.ts** de la misma carpeta, donde la llave es el nombre del video y el valor es el video importado através de la función *require()*
 ## Carga de datos
 La información de la aplicación se encuentra en la carpeta [/constants](https://github.com/driquelmemurua/salud-udp/tree/master/constants). En el archivo **index.ts** se exporta todo.
