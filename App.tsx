@@ -3,6 +3,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider } from 'react-redux';
+import { AsyncStorage } from 'react-native';
+import axios from 'axios';
 import { 
   Menu,
   Contactos,
@@ -16,10 +19,10 @@ import {
   Documento,
   Video
 } from './views';
-import { CONTENT_VIEWS, DIRECCION_VIEWS } from './constants';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { CONTENT_VIEWS, DIRECCION_VIEWS } from './constants';
 import reducer from './reducers';
+import { API_URI } from './constants';
 
 //redux
 const store = createStore(reducer);
@@ -93,7 +96,23 @@ function AccidentsNavigation() {
   );
 }
 
+const loadData = async (uri) => {
+  try {
+    const { data } = await axios.get(uri);
+    if(data){
+      await AsyncStorage.setItem('accidentes', JSON.stringify(data.accidentes));
+      await AsyncStorage.setItem('contactos', JSON.stringify({ contactos: data.contactos, emergencias: data.emergencias }));
+      await AsyncStorage.setItem('direcciones', JSON.stringify(data.direcciones));
+      await AsyncStorage.setItem('instructivos', JSON.stringify(data.instructivos));
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 function App() {
+  loadData(API_URI);
+
   return (
     <Provider store={ store }>
       <NavigationContainer>

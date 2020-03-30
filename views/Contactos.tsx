@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { Text, FlatList, View, TouchableHighlight, Linking } from 'react-native';
+import { Text, FlatList, View, TouchableHighlight, Linking, AsyncStorage } from 'react-native';
 
 import { connect } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { CONTACTOS, I_CONTACTOS, EMERGENCIAS, I_EMERGENCIAS } from '../constants';
+import { I_CONTACTOS, I_EMERGENCIAS } from '../constants';
 import { filterBySchool } from '../helpers';
 
 function Contactos({navigation, selectedSchool}) {
-  const filteredContacts = filterBySchool(CONTACTOS, selectedSchool);
-  const filteredEmergencies = filterBySchool(EMERGENCIAS, selectedSchool);
+  const [loading, setLoading] = useState(true);
+  const [contacts, setContacts] = useState([]);
+  const [emergencies, setEmergencies] = useState([]);
+  
+  if(contacts.length === 0 && emergencies.length === 0 && loading){
+    AsyncStorage.getItem('contactos', (err, res) => {
+      if(res){
+        const { contactos, emergencias } = JSON.parse(res);
+        setContacts(filterBySchool(contactos, selectedSchool));
+        setEmergencies(filterBySchool(emergencias, selectedSchool));
+        setLoading(false);
+      }
+    })
+    return <Default>{}</Default>
+  }
 
   return (
     <Default
@@ -21,12 +34,12 @@ function Contactos({navigation, selectedSchool}) {
     >
       <FlatList
         style={{width: '80%', flexGrow: 0, paddingBottom:50 }}
-        data={filteredContacts}
+        data={contacts}
         renderItem={({ item }: { item: I_CONTACTOS }) => <PhoneContact name={item.name} number={item.number}/>}
       />
       <FlatList
         style={{width: '80%', flexGrow: 0}}
-        data={filteredEmergencies}
+        data={emergencies}
         renderItem={({ item }: { item: I_EMERGENCIAS }) => <PhoneContact number={item.number}/>}
       />
     </Default>

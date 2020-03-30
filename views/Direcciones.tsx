@@ -1,5 +1,5 @@
-import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, TouchableOpacity, View, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -7,13 +7,25 @@ import { Default } from '../layouts';
 import { styles } from '../styles';
 import { filterByProp, composeFilters } from '../helpers';
 import { AutoComplete } from '../components';
-import { DIRECCIONES, I_DIRECCIONES } from '../constants';
+import { I_DIRECCIONES } from '../constants';
 import { useFilterByText, } from '../hooks';
 
 function Direcciones({navigation, selectedSchool}) {
   const [hasName, onChangeText] = useFilterByText('name');
   const filters = composeFilters(filterByProp('schools', selectedSchool), hasName);
-  const direcciones = DIRECCIONES.filter(filters);
+  const [loading, setLoading] = useState(true);
+  const [addresses, setAddresses] = useState([]);
+  const direcciones = addresses.filter(filters);
+
+  if(addresses.length === 0 && loading){
+    AsyncStorage.getItem('direcciones', (err, res) => {
+      if(res){
+        setAddresses(JSON.parse(res));
+        setLoading(false);
+      }
+    })
+    return <Default>{}</Default>
+  }
 
   return (
     <Default

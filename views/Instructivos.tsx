@@ -1,20 +1,30 @@
-import React from 'react';
-import { FlatList } from 'react-native'
+import React, { useState } from 'react';
+import { FlatList, AsyncStorage } from 'react-native'
 import { Default } from '../layouts';
 
 import { connect } from 'react-redux';
 import { AutoCompleteWithFilters, FileItem } from '../components';
 import { useFilterByText, useFilterByTags } from '../hooks';
 import { composeFilters } from '../helpers';
-import { INSTRUCTIVOS } from '../constants';
 
 function Instructivos({navigation, selectedSchool}) {
   const [hasName, onChangeText] = useFilterByText('name');
   const [schools, schoolActions, hasSchool] = useFilterByTags('schools', {[selectedSchool]: true});
   const [types, typeActions, hasType] = useFilterByTags('type');
   const filters = composeFilters(hasName, hasSchool, hasType);
+  const [loading, setLoading] = useState(true);
+  const [instructives, setInstructives] = useState([]);
+  const instructivos = instructives.filter(filters);
 
-  const instructivos = INSTRUCTIVOS.filter(filters);
+  if(instructives.length === 0 && loading){
+    AsyncStorage.getItem('instructivos', (err, res) => {
+      if(res){
+        setInstructives(JSON.parse(res));
+        setLoading(false);
+      }
+    })
+    return <Default>{}</Default>
+  }
 
   console.log(instructivos)
   const tags = {

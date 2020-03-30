@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { FlatList, Text, TouchableWithoutFeedback} from 'react-native';
+import { FlatList, Text, TouchableWithoutFeedback, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 import { Default } from '../layouts';
 import { styles } from '../styles';
-import { ACCIDENTS_VIEWS, I_ACCIDENTS_VIEWS } from '../constants';
+import { I_ACCIDENTS_VIEWS } from '../constants';
 import { filterBySchool } from '../helpers';
 
 function Accidentes({navigation, selectedSchool}) {
-   
-  const [accidentsBySchool,] = useState(filterBySchool(ACCIDENTS_VIEWS, selectedSchool));
+  const [loading, setLoading] = useState(true);
+  const [accidents, setAccidents] = useState([]);
+
+  if(accidents.length === 0 && loading){
+    AsyncStorage.getItem('accidentes', (err, res) => {
+      if(res){
+        setAccidents(filterBySchool(JSON.parse(res), selectedSchool));
+        setLoading(false);
+      }
+    })
+    return <Default>{}</Default>
+  }
 
   return (
     <Default
@@ -16,7 +26,7 @@ function Accidentes({navigation, selectedSchool}) {
       subtitle={selectedSchool}
       title='Categoría de accidente'>
       <FlatList
-        data={accidentsBySchool}
+        data={accidents}
         renderItem={({ item }: { item: I_ACCIDENTS_VIEWS }) => 
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Flujograma', {file: item.file})} >
             <Text style={styles.accidentesItem}>
